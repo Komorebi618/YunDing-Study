@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Microsoft YaHei UI";
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/* 顶部个人信息 */
+.background {
+    width: 608px;
+    margin: 20px auto 0px auto;
+    padding: 16px;
+    border: 2px solid #c0daee;
+    box-shadow: 0px 0px 7px 7px #c0daee;
+    border-radius: 15px;
+}
+.logo_user {
+    display: flex;
+    margin-bottom: 18px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.logo_user span {
+    font-size: 16px;
+}
+#logo {
+    vertical-align: middle;
+}
+/* 导航栏 */
+.nav {
+    width: 506px;
+    height: 31px;
+    margin: 0px auto 49px auto;
+    border-radius: 15px;
+    background-color: #f7fdff;
+}
+.nav ul {
+    display: flex;
+    width: 506px;
+    flex-direction: row;
+    align-items: center;/*为什么不能垂直居中li*/
+    justify-content: space-around;
+}
+.nav li {
+    display: inline-block;
+    border-radius: 5px;
+}
+.nav li a {
+    font-size: 10px;
+    color: #000;
+    line-height: 31px;
+    text-align: center;
+}
+#current {
+    color: #68d5dd;
+}
+.nav li a:hover {
+    color: #68d5dd;
+}
+/* 邮箱动态-收件箱 */
+.message_nav {
+    display: flex;
+    margin: 0px 3px 3px 3px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.message_nav .title {
+    font-size: 16px;
+    font-weight: 600;
+}
+/* 邮箱动态-已读未读选择 */
+.email {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+.email .nav {
+    display: inline-block;
+    margin-right: 10px;
+    width: 150px;
+}
+.email .nav span,
+.email .nav button {
+    display: inline-block;
+    width: 42px;
+    height: 21px;
+    line-height: 21px;
+    font-size: 10px;
+    color: #000;
+}
+.email .nav button {
+    border: 0px;
+}
+.email .nav button:hover {
+    cursor: pointer;
+}
+.email .nav .read {
+    background-color: #bef6ff;
+}
+.email .nav .unread {
+    background-color: #e6f9fc;;
+}
+.read_arrows,
+.unread_arrows {
+    margin: -2px -5px;
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid;
+    border-width: 7px;
+}
+.read_arrows {
+    visibility: hidden;
+    border-color: #FFF #fff #fff #bef6ff;
+}
+.read_arrows:hover {
+    visibility: visible;
+}
+.unread_arrows {
+    border-color: #FFF #fff #fff #e6f9fc;
+}
+
+/* 邮件消息 */
+.email .email_message li {
+    /* display: inline-block; */
+    display: flex;
+    width: 453px;
+    height: 46px;
+    background-image: url(https://star-tomato.oss-cn-beijing.aliyuncs.com/Rectangle%2065.png);
+    font-size: 7px;
+    align-items: center;
+}
+.email .email_message .addresser {
+    flex: 3;
+    margin-left: 10px;
+}
+.email .email_message li a {
+    flex: 1;
+    color: gray;
+}
+.email .email_message li span {
+    text-align: center;
+    flex: 5;
+    color: gray;
+}
+.email .email_message .addresser img {
+    vertical-align: middle;
+}
+
+/* 写邮件 */
+.email .write {
+    display: inline-block;
+    width: 120px;
+    height: 20px;
+    margin: 110px 30px 0px 5px;
+    border-radius: 5px;
+    background-color: #39c8d2;
+    font-size: 5px;
+}
