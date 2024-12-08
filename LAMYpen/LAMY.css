@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.w { /* 版心 */
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+/* 头部导航栏及其背景 */
+.PenBackground{
+    width: 1920px;
+    height: 814px;
+    background-image: url(https://star-tomato.oss-cn-beijing.aliyuncs.com/PenBackground.png);
+    margin: auto;
+}
+.head_alaph{
+    float: left;
+    width: 1920px;
+    height: 814px;
+    background-color: rgb(0,0,0,0.3);
+}
+.PenBackground ul {
+    margin-left: 474px;
+}
+.PenBackground ul li {
+    float: left;
+    height: 97px;
+    padding-left: 52px;
+    /* background-color: cadetblue; */
+}
+.PenBackground ul li a {
+    display: block;
+    line-height: 97px;
+    color: #ffffff;
+    font-size: 22px;
+    font-family: Microsoft Yahei;
+}
+.head_art {
+    position: absolute;
+    top: 330px;
+    left: 50%;
+    margin-left: -466px;
+}
+
+/* Welcome to Lamy */
+.Gray_bg { /* 所有背景长条灰色 */
+    width: 1920px;
+    height: 500px;
+    margin: auto;
+}
+.Gray1 {
+    position: relative;
+    margin-top: 30px;
+    padding-top: 100px;
+    height: 400px;
+    background: #eae7e8;
+}
+.Gray1 ul {
+    display: inline-block;
+    margin-left: 410px;
+    width: 1150px;
+    height: 510px;
+    background-color: #ffffff;
+    box-shadow: 2px 2px 2px #000000;
+}
+.Gray1 ul li {
+    float: left;
+}
+#WTL_pic {
+    margin-top: 75px;
+}
+.Gray1 ul li span {
+    margin-left: 80px;
+}
+.Gray1 ul li span p {
+    margin-top: 30px;
+    margin-left: 80px;
+    line-height: 35px;
+    font-size: 20px;
+    font-family: 宋体;
+}
+#WTL_play {
+    position: absolute;
+    top: 435px;
+    left: 530px;
+    opacity: 0.8;
+}
+
+/* LAMY各系列 */
+.LAMY_series div{
+    
+    margin: 260px 450px 125px 450px;
+}
+.LAMY_series ul li {
+    float: left;
+    margin: 0px 15px;
+    font-size: 19px;
+    line-height: 30px;
+}
+.LAMY_series ul li span {
+    display: inline-block;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+.LAMY_series .learn_details {
+    display: inline-block;
+    margin: 80px 475px;
+    width: 240px;
+    height: 65px;
+    font-size: 25px;
+    line-height: 65px;
+    text-align: right;
+    color: #fff;
+    background-color: #2b2b2b;
+}
+/* 两支笔 */
+.Gray2 {
+    position: relative;
+    height: 390px;
+    background-color: #dad8d9;
+}
+.Gray2 div {
+    margin-left: 360px;
+}
+#yellow_pen {
+    margin-top: -3px;/* 如何解决div之间的空隙？ */
+}
+.Gray2 span {
+    position: absolute;
+    left: 405px;
+    top: 200px;
+    width: 89px;
+    height: 35px;
+    font-size: 20px;
+    font-family: "Myriad Pro";
+    color: #dad2d5;
+    line-height: 35px;
+    background-color: #e8024d;
+}
+
+/* 评价 */
+.Gray3 {
+    background-color: #6f6d6d;
+    margin-bottom: 160px;
+    height: 270px;
+    padding-top: 78px;
+}
+.Gray3 .comment_box{
+    margin: 48px auto 0px auto;
+    padding-top: 40px;
+    width: 813px;
+    height: 234px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px;
+}
+.Gray3 .comment {
+    margin: 20px auto 35px;
+    font-size: 17px;
+    line-height: 20px;
+}
+.Gray3 .squre {
+    margin: auto;
+}
+.Gray3 .squre li {
+    display: inline-block;
+    margin: 0px 15px;
+    width: 43px;
+    height: 9px;
+    background-color: #e6e4e4;
+}
+#current {
+    background-color: #807a7a;
+}
+
+/* Choose Our products */
+.ChooseOP {
+    margin-bottom: 30px;
+}
+.SixPictures li {
+    display: inline-block;
+    width: 249px;
+    margin: 0px 34px;
+}
+.SixPictures li img {
+    margin: 10px 0px;
+}
+.qiru {
+    margin: 68px auto 40px;
+    width: 222px;
+    height: 70px;
+    font-size: 25px;
+    line-height: 70px;
+    font-family: "宋体";
+    /* color: #fff; */
+    background-color: #4a3e42;
+}
+#qirutxt {
+    color: #fff;/* 问题：为什么.qiru 中字体颜色设置不起作用呢？ */
+}
+
+/* 新品推荐 */
+.Gray4 {
+    background-color: #4d524d;
+}
+.ad_box {
+    display: inline-block; /* 问题：不改成行内块为什么就不能居中呢？ */
+    padding: 20px;
+    margin-top: 90px;
+    width: 875px;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px;
+}
+.ad_pic {
+    display: inline-block;
+    margin-right: 20px;
+}
+.ad_pic li {
+    margin: 15px;
+}
+.words {
+    position: relative;
+    top: -30px;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Myriad Pro';
+    line-height: 30px;
+    text-align: left;
+}
+.words li {
+    margin: 15px;
+    width: 377px;
+    height: 121px;
+}
+#new_goods {
+    display: inline-block;
+    margin: 40px auto 30px;
+    width: 202px;
+    height: 60px;
+    font-size: 25px;
+    line-height: 60px;
+    font-family: "宋体";
+    color: #fff;
+    background-color: #e8024d;
+}
+
+.bottom {
+    width: 1920px;
+    margin: 240px auto;
+}
