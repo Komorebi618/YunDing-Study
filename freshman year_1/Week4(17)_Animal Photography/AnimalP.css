@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    overflow-x: hidden;
+}
+li {
+    list-style: none;
+}
+
+/* 上方菜单搜索栏 */
+.Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 49px;
+}
+.Top button {
+    margin-left: 15px;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 0px;
+}
+.search {
+    margin-right: 15px;
+}
+.camera {
+    padding-top: 150px;
+    /* 为什么不设内边距图像会卡出页面 */
+    height: 200px;
+    width: 200px;
+}
+
+/* 乌龟与文字APE */
+.tortoise {
+    margin: 0 auto;
+    padding-top: 243px;
+    height: 629px;
+    width: 1920px;
+    background-image: url(https://star-tomato.oss-cn-beijing.aliyuncs.com/YunDing_Academy/Freshman_year_1/Week4%2817%29_Animal%20Photography/tortoise.jpg);
+    border-top: 1px none white;
+}
+.tortoise ul {
+    margin: 0px auto;
+    width: 1096px;
+    height: 386px;
+}
+.tortoise .AP {
+    margin-bottom: 24px;
+    font: 72px Cambria;
+    color: #2a3f17;
+}
+.tortoise .aSilhouetteUs {
+    margin-bottom: 37px;
+    font: 30px "Microsoft YaHei UI" ;
+    color: #2a3f17;
+}
+.tortoise .EXPIORE {
+    height: 72px;
+    width: 262px;
+    font: 30px "Microsoft YaHei UI" ;
+    color: #ffffff;
+    text-align: center;
+    line-height: 72px;
+    background-color: #2a3f17;
+}
