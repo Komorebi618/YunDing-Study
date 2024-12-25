@@ -22,21 +22,31 @@ a {
     max-width: 1920px;
     height: 49px;
 }
-.Top a {
-    margin-left: 15px;
-    height: 20px;
+.Top span {
+    margin: 0px 15px;
+    height: 30px;
     width: 20px;
     background-color: white;
+    transition: transform 0.2s ease;
 }
-.search {
+.Top span:hover {
+    transform: scale(0.5);
+}
+.Top .search {
     margin-right: 15px;
 }
-.camera {
+.Top .camera {
     padding-top: 150px;
     /* 为什么不设内边距图像会卡出页面 */
     height: 200px;
     width: 200px;
+    transition: all 0.3s ease;
 }
+.Top .camera:hover {
+    padding-top: 125px;
+    transform: scale(0.7);
+}
+
 
 /* 乌龟与文字APE */
 .tortoise {
@@ -71,6 +81,14 @@ a {
     text-align: center;
     line-height: 72px;
     background-color: #2a3f17;
+    border: 3px solid transparent;
+    transition: all 0.5s ease;
+}
+.tortoise .EXPIORE:hover {
+    background-color: transparent;
+    color: #2a3f17;
+    border: 3px solid #2a3f17;
+    cursor: pointer;
 }
 
 /* 三只火烈鸟 */
@@ -85,6 +103,7 @@ a {
     display: inline-block;
     width: 333px;
     height: 500px;
+    transition: transform 0.5s ease;
 }
 .flamingo .flamingo1 {
     background-image: url(https://star-tomato.oss-cn-beijing.aliyuncs.com/YunDing_Academy/Freshman_year_1/Week4%2817%29_Animal%20Photography/flamingo1.jpg);
@@ -94,6 +113,11 @@ a {
 }
 .flamingo .flamingo3 {
     background-image: url(https://star-tomato.oss-cn-beijing.aliyuncs.com/YunDing_Academy/Freshman_year_1/Week4%2817%29_Animal%20Photography/flamingo3.jpg);
+}
+.flamingo .flamingo1:hover,
+.flamingo .flamingo2:hover,
+.flamingo .flamingo3:hover {
+    transform: translateY(-60px);
 }
 
 /* 注册 */
@@ -117,6 +141,10 @@ a {
     width: 871px;
     height: 466px;
     background-color: #e0dfdf;
+    transition: margin-top 0.5s ease;
+}
+.giraffe .ad:hover {
+    margin-top: -60px;
 }
 .giraffe .adWords {
     font: 25px "Microsoft YaHei UI";
@@ -133,20 +161,72 @@ a {
     line-height: 70px;
     background-color: #2a3f17;
     border: 0;
+    transition: transform 0.3s ease;
+}
+.giraffe a:hover {
+    transform: scale(0.8);
 }
 
 /* 不同的动物们 */
 .difference {
+    position: relative;
     margin: 80px auto 0px auto;
-    height: 53px;
+    height: 55px;
     width: 236px;
     font: 48px "Microsoft YaHei UI";
     color: #2a3f17;
+    border: 5px solid transparent;
+    /* transition: all 1s ease; */
+}
+/* .difference:hover {
+    animation: myborder 2s forwards;
+} 
+@keyframes myborder {
+    0% {
+        border-color: transparent;
+    }
+    25% {
+        border-top-color: #2a3f17;
+    }
+    50% {
+        border-top-color: #2a3f17;
+        border-right-color:  #2a3f17;
+    }
+    75% {
+        border-top-color: #2a3f17;
+        border-right-color: #2a3f17;
+        border-bottom-color: #2a3f17;
+    }
+    100% {
+        border-top-color: #2a3f17;
+        border-right-color: #2a3f17;
+        border-bottom-color: #2a3f17;
+        border-left-color: #2a3f17;
+    }
+} */
+/* 不是绘制效果 */
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.path {
+    stroke: #2a3f17;
+    fill: transparent;
+    stroke-width: 5px;
+    stroke-dasharray: 600px;
+    stroke-dashoffset: 600px;
+    transition: stroke-dashoffset 2s ease;
+}
+.difference:hover .path {
+    stroke-dashoffset: 0px;
 }
 .fourAnimals {
     display: flex;
     justify-content: space-between;
-    margin: 40px auto 0px auto;
+    margin: 120px auto 0px auto;
     width: 1146px;
 }
 .fourAnimals li {
@@ -158,6 +238,10 @@ a {
     width: 264px;
     color: #2a3f17;
     background-color: #e0dfdf;
+    transition: margin-top 0.5s ease;
+}
+.fourAnimals li:hover {
+    margin-top: -80px;
 }
 .fourAnimals img {
     height: 264px;
@@ -188,6 +272,11 @@ a {
     text-align: center;
     line-height: 70px;
     border: 4px solid #2a3f17;
+    transition: all 0.5s ease;
+}
+.Know_more:hover {
+    color: #fff;
+    background-color: #2a3f17;
 }
 .squirrelAndWords {
     display: flex;
@@ -196,7 +285,6 @@ a {
     width: 1404px;
     height: 1020px;
     color: #2a3f17;
-
 }
 .squirrel {
     width: 702px;
@@ -208,20 +296,37 @@ a {
 .squirrelRight li {
     font-size: 24px;
 }
+.squirrelRight li a {
+    font-size: 36px;
+    color: #2a3f17;
+}
 .squirrelRight .wPhoto {
     margin-bottom: 42px;
     font: 36px "Microsoft YaHei UI";
+    transition: transform 1s ease;
+}
+.squirrelRight .wPhoto:hover {
+    transform: translateY(-80px);
 }
 .squirrelRight .introduction {
     margin-bottom: 82px;
     font: 24px "Microsoft YaHei UI";
+    transform-origin: top left;
+    transition: all 0.5s ease;
+}
+.squirrelRight .introduction:hover {
+    transform: scale(1.1);
 }
 .squirrelRight .iconfont {
     margin-bottom: 88px;
+    transition: transform 1s ease;
+}
+.squirrelRight .iconfont:hover {
+    transform: translateX(100px)
 }
 .squirrelRight .iconfont::first-letter {
     /* 运用伪类选择器将首字符变大 */
-    font-size: 48px;
+    font-size: 60px;
 }
 
 /* 页面结尾 */
@@ -266,4 +371,10 @@ a {
     line-height: 73px;
     text-align: center;
     background-color: #2a3f17;
+    transition: all 0.5s ease;
+}
+.footer .Big_World:hover {
+    transform: translateY(-20px);
+    background-color: #fff;
+    color: #2a3f17;
 }

@@ -10,6 +10,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.iconfont1 {
+  font-family: "iconfont" !important;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .icon-sousuo:before {
   content: "\e752";
