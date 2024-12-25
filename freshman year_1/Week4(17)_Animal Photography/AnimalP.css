@@ -8,6 +8,9 @@ body {
 li {
     list-style: none;
 }
+a {
+    text-decoration: none;
+}
 
 /* 上方菜单搜索栏 */
 .Top {
@@ -19,12 +22,11 @@ li {
     max-width: 1920px;
     height: 49px;
 }
-.Top button {
+.Top a {
     margin-left: 15px;
     height: 20px;
     width: 20px;
     background-color: white;
-    border: 0px;
 }
 .search {
     margin-right: 15px;
@@ -56,7 +58,7 @@ li {
     font: 72px Cambria;
     color: #2a3f17;
 }
-.tortoise .aSilhouetteUs {
+.tortoise .A_silhouette__us {
     margin-bottom: 100px;
     font: 30px "Microsoft YaHei UI" ;
     color: #2a3f17;
@@ -121,7 +123,7 @@ li {
     color: #2a3f17;
     line-height: 37px;
 }
-.giraffe button {
+.giraffe a {
     margin: 100px auto 0px auto;
     height: 70px;
     width: 197px;
@@ -131,4 +133,137 @@ li {
     line-height: 70px;
     background-color: #2a3f17;
     border: 0;
+}
+
+/* 不同的动物们 */
+.difference {
+    margin: 80px auto 0px auto;
+    height: 53px;
+    width: 236px;
+    font: 48px "Microsoft YaHei UI";
+    color: #2a3f17;
+}
+.fourAnimals {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px auto 0px auto;
+    width: 1146px;
+}
+.fourAnimals li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    height: 413px;
+    width: 264px;
+    color: #2a3f17;
+    background-color: #e0dfdf;
+}
+.fourAnimals img {
+    height: 264px;
+    margin-bottom: 30px;
+}
+.fourAnimals .name {
+    margin-bottom: 20px;
+    font: 30px "Microsoft YaHei UI";
+}
+.fourAnimals a {
+    margin-bottom: 40px;
+    width: 190px;
+    height: 30px;
+    font: 21.85px "Microsoft YaHei UI";
+    color: #2a3f17;
+    border-bottom: 3px solid;
+    /* 文字下方合适的下划线，用边框也可以实现 */
+}
+
+/* Know more与松鼠 */
+.Know_more {
+    display: block;
+    margin: 120px auto 85px;
+    width: 360px;
+    height: 70px;
+    font: 30px "Microsoft YaHei UI";
+    color: #2a3f17;
+    text-align: center;
+    line-height: 70px;
+    border: 4px solid #2a3f17;
+}
+.squirrelAndWords {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px auto 60px;
+    width: 1404px;
+    height: 1020px;
+    color: #2a3f17;
+
+}
+.squirrel {
+    width: 702px;
+    height: 1020px;
+}
+.squirrelRight {
+    margin: 93px 10px 0px 129px;
+}
+.squirrelRight li {
+    font-size: 24px;
+}
+.squirrelRight .wPhoto {
+    margin-bottom: 42px;
+    font: 36px "Microsoft YaHei UI";
+}
+.squirrelRight .introduction {
+    margin-bottom: 82px;
+    font: 24px "Microsoft YaHei UI";
+}
+.squirrelRight .iconfont {
+    margin-bottom: 88px;
+}
+.squirrelRight .iconfont::first-letter {
+    /* 运用伪类选择器将首字符变大 */
+    font-size: 48px;
+}
+
+/* 页面结尾 */
+.footer {
+    margin: 0 auto;
+    padding: 176px 0px;
+    /* padding: 176px 331px 176px 445px; */
+    width: 100%;
+    max-width: 1920px;
+    /* max-width: 1299px; */
+    height: 108px;/*460*/
+    color: #2a3f17;
+    border-top: 5px solid #2a3f17;
+}
+.footer ul {
+    margin: 0px 331px 0px 445px;
+    display: flex;
+    margin: 0 auto;
+    width: 1146px;
+    height: 124px;
+    /* 用外边距居中，记得写盒子大小 */
+    justify-content: space-between;
+}
+.footer .IN_THE__SEA {
+    font: 40px "Microsoft YaHei UI";
+}
+#MORE {
+    font: 30px "Microsoft YaHei UI";
+}
+.footer .MORE_We__life{
+    flex: 1;
+    margin-left: 50px;
+    font: 24px "Microsoft YaHei UI";
+}
+.footer .Big_World{
+    display: block;
+    margin-top: 20px;
+    width: 361px;
+    height: 73px;
+    font: 36px "Microsoft YaHei UI";
+    color: #fff;
+    line-height: 73px;
+    text-align: center;
+    background-color: #2a3f17;
 }
