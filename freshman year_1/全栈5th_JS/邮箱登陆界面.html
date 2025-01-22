@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱登录页面</title>
+    <style>
+        .box {
+            display: flex;
+            height: 250px;
+            width: 240px;
+            margin: 100px auto;
+            border: 5px solid #61649F;
+            border-radius: 20px;
+            box-shadow: 7px 7px 7px #61649F;
+            transition: width 1s ease;
+        }
+        .login {
+            margin: 0 auto;
+            height: 250px;
+            width: 180px;
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            width: 80px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="login">
+            <h2>邮箱登录</h2>
+            <div>邮箱</div>
+            <input class="email" type="text" value="yunding@qq.com">
+            <div>密码</div>
+            <input class="pwd" type="password" value="33333"><br/>
+            <input class="displayPwd" type="checkbox" >显示密码<br/>
+            <button class="btn">登录</button>
+        </div>
+        <div class="urMsg"></div>
+    </div>
+
+    <script>
+        let msg = [{
+                name: '张三',
+                age: 20,
+                strengths: 'JavaScript',
+                avatar: 'https://tse4-mm.cn.bing.net/th/id/OIP-C.39mOMBjUfsK-HL9jUbv1MwHaE7?pid=ImgDet&rs=1',
+                email: 'yunding@qq.com',
+                password: 33333
+            },
+            {
+                name: '李四',
+                age: 19,
+                strengths: 'python',
+                avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.YlKimVo94OkaZDZCzPIDpAHaFh?pid=ImgDet&rs=1',
+                email: '12345678@163.com',
+                password: 11111
+            },
+            {
+                name: '王五',
+                age: 18,
+                strengths: 'Java',
+                avatar: 'https://tse2-mm.cn.bing.net/th/id/OIP-C.P2hK9SRjhFE8WM9N8tgWFAHaEQ?pid=ImgDet&rs=1',
+                email: 'yundingshuyuan@qq.cn',
+                password: 222222
+            },
+            ]
+        let inputMsg = {
+            //检验邮箱格式是否完全符合要求
+            eFormat: function(email){
+                //检验是否以正确邮件格式结尾
+                let regEnd = /@(qq|163)\.(com|cn)$/
+                let endResult = regEnd.test(email.value)
+                //检验是否只有一个小数点
+                let onePoint = email.value.match(/\./g).length === 1
+                let formatResult = [endResult&&onePoint, !endResult, !onePoint, ((!endResult)&&(!onePoint))]
+                
+                return formatResult
+            },
+            //判断邮件格式问题所在
+            formatError: function(formatResult){
+                if(formatResult[3]){
+                    urMsg.innerHTML = `<h3 style="color: red;">只可使用QQ邮箱或网易(163)邮箱！<br/>邮箱应以\"\.com\"或\"\.cn\"结尾</br>邮箱名中只能出现一次\"\.\"</h3>`
+                }
+                else if(formatResult[1]){
+                    urMsg.innerHTML = `<h3 style="color: red;">只可使用QQ邮箱或网易(163)邮箱！<br/>邮箱应以\"\.com\"或\"\.cn\"结尾</h3>`
+                }
+                else if(formatResult[2]){
+                    urMsg.innerHTML = `<h3 style="color: red;">邮箱名中只能出现一次\"\.\"</h3>`
+                }
+            },
+            //寻找邮箱与相应密码
+            findEP: function(email, pwd){
+                let flag = true
+
+                for (let i=0; i<msg.length; i++){
+                    let regMsgEmail = new RegExp(`^${msg[i].email}$`, '')
+                    
+                    if(regMsgEmail.test(email)){//邮件用户是否存在
+                        flag = false
+                        if(pwd === msg[i].password){//对应密码是否正确
+                            urMsg.innerHTML = `
+                            登录成功</br>
+                            <img src=${msg[i].avatar}></br>
+                            姓名：${msg[i].name}</br>
+                            年龄：${msg[i].age}</br>
+                            特长：${msg[i].strengths}`
+                            break
+                        }
+                        else{
+                            urMsg.innerHTML = `<h3 style="color: red;">邮箱与密码不匹配！</h3>`
+                        }
+                    }
+                }
+                if(flag){
+                    urMsg.innerHTML = `<h3 style="color: red;">该用户不存在！</h3>`
+                }
+            },
+        }
+        
+        const btn = document.querySelector('.btn')
+        const urMsg = document.querySelector('.urMsg')//HTML标签——显示消息或用户信息
+        const email = document.querySelector('.email')
+        const pwd = document.querySelector('.pwd')
+        //点击按钮后操作
+        btn.addEventListener('click', function(){
+            urMsg.innerHTML = ''
+
+            if(email.value === ''&&pwd.value === ''){
+                urMsg.innerHTML = `<h3 style="color: red;">请输入邮箱和密码！</h3>`
+            }
+            else{
+                const formatResult = inputMsg.eFormat(email)
+                if(formatResult[0]) {//检验邮箱格式
+                    inputMsg.findEP(email.value, +pwd.value)//查找该用户与对应密码
+                }
+                else{
+                    inputMsg.formatError(formatResult)
+                }
+            }
+
+            //点击按钮后的动画效果
+            const box = document.querySelector('.box')
+            box.style.width = '540px';
+            urMsg.style.width = '240px';
+            urMsg.style.paddingTop = '52px';
+            urMsg.style.paddingRight = '20px';
+        })
+
+        //显示密码按钮
+        const displayPwd = document.querySelector('.displayPwd')
+        displayPwd.addEventListener('click', function(){
+            if(displayPwd.checked){
+                pwd.type = 'text'
+            }
+            else{
+                pwd.type = 'password'
+            }
+        })
+    </script>
+</body>
+</html>

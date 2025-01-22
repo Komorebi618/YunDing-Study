@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查找字符串中子串个数</title>
+    <style>
+        .box {
+            height: 250px;
+            width: 240px;
+            margin: 100px auto;
+            padding: 0px 30px;
+            border: 5px solid #61649F;
+            border-radius: 20px;
+            box-shadow: 7px 7px 7px #61649F;
+        }
+
+        .num {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>查找字符串中子串个数</h2>
+        <div>请输入一个字符串：</div>
+        <input class="str" type="text" value="">
+        <div>请输入一个要查找的字符串子串：</div>
+        <input class="target" type="text" value="">
+        <button class="btn">提交</button>
+        <div>子串出现的次数为：</div>
+        <div class="num"></div>
+    </div>
+
+    <script>
+        let i = 0
+        const btn = document.querySelector('.btn')
+
+        //点击按钮后功能
+        btn.addEventListener('click', function(){
+            const str = document.querySelector('.str').value
+            const target = document.querySelector('.target').value
+            const num = document.querySelector('.num')
+            const reg = new RegExp(target, 'g')
+            let result = str.match(reg)
+            console.log(str)
+            console.log(target)
+            console.log(result)
+
+            if(result){
+                num.innerHTML = `<h2>${result.length}</h2>`
+            }
+            else{
+                num.innerHTML = `<h2>0</h2>`
+            }
+        })
+    </script>
+</body>
+</html>
