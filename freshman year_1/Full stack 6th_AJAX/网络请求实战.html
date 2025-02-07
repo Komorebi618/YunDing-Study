@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络请求实战</title>
+    <style>
+        .box {
+            display: flex;
+            height: 250px;
+            width: 240px;
+            margin: 100px auto;
+            border: 5px solid #61649F;
+            border-radius: 20px;
+            box-shadow: 7px 7px 7px #61649F;
+            transition: width 1s ease;
+        }
+        .signInPage {
+            margin: 0 auto;
+            height: 250px;
+            width: 180px;
+        }
+        h3 {
+            text-align: center;
+        }
+        .userList {
+            overflow: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="signInPage">
+            <h3 class="time">Time:</h3>
+            <div>账号（书名）：</div>
+            <input class="account" type="text" value="">
+            <div>密码（作者）：</div>
+            <input class="pwd" type="password" value=""><br />
+            <input class="displayPwd" type="checkbox" id="pwd"><label for="pwd">显示密码</label><br />
+            <button class="signIn">注册</button>
+            <button class="getListBtn">获取用户列表</button>
+        </div>
+        <div class="userList"></div>
+    </div>
+
+    <script>
+        const time = document.querySelector(".time")
+        const account = document.querySelector(".account")
+        const pwd = document.querySelector(".pwd")
+        const signIn = document.querySelector(".signIn")
+        const getListBtn = document.querySelector(".getListBtn")
+        const userList = document.querySelector(".userList")
+
+        //0.2显示密码按钮
+        const displayPwd = document.querySelector('.displayPwd')
+        displayPwd.addEventListener('click', function () {
+            if (displayPwd.checked) {
+                pwd.type = 'text'
+            }
+            else {
+                pwd.type = 'password'
+            }
+        })
+
+        //1.网络请求部分
+        axios.defaults.baseURL = "https://hmajax.itheima.net/api"
+        let getTimeIns = axios.create({})
+        let signInIns = axios.create({})
+        let getListIns = axios.create({})
+
+        getTimeIns({//1.1获得服务器时间（获得当前日期 地区 天气）
+            method: "get",
+            url: "/weather",
+            params: {
+                city: "140702"
+            },
+        }).then(result => {
+            time.innerHTML = result.data.data.dateShort + ` ` + result.data.data.area + ' ' + result.data.data.weather
+        }).catch(err=>{
+            alert(err)
+        })
+
+        signIn.addEventListener('click',function() {
+            signInIns({//1.2发送用户信息（上传书籍）
+                method: "post",
+                url: "/books",
+                data: {
+                    bookname: account.value,
+                    author: pwd.value,
+                    publisher: ' ',
+                    creator: 'Tomato',
+                },
+            }).then(data => {
+                console.log(`注册报文`, data)
+                boxAnim()//0.1.点击按钮后动画效果
+            }).catch(err => {
+                if(err.status === 400){
+                    alert("请填写完整信息！")
+                }
+            })
+        })
+
+        getListBtn.addEventListener('click', function(){
+            boxAnim()
+            getListIns({//1.3查看用户信息（查看书籍列表）
+                method: 'get',
+                url: '/books',
+                params: {
+                    creator: "Tomato",
+                }
+            }).then(data =>{
+                console.log('用户消息列表报文', data)
+                const list = (data.data.data.map(data => data.bookname)).map(ele => `<li>`+ele+`</li>`).join('')
+                userList.innerHTML = `<ul>${list}<ul/>`
+            }).catch(err =>{
+                console.log(err)
+            })
+        })
+
+        function boxAnim(){//点击按钮后的动画效果
+            const box = document.querySelector('.box')
+            box.style.width = '540px';
+            userList.style.width = '240px';
+            userList.style.paddingRight = '20px';
+        }
+        </script>
+</body>
+</html>
