@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>management general</title>
+    <link rel="stylesheet" href="styles .css">
+    <link rel="stylesheet" href="01-方向选择 .css">
+    <link rel="stylesheet" href="03-方向统计图.css">
+    <link rel="stylesheet" href="02-成员信息-修改页面.css">
+    <!-- 用于随机生成数据，测试用，正式项目可删除 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.1-beta3/mock-min.js"></script>
+</head>
+
+<body onload="printList()">
+    <!-- 侧边栏 -->
+    <nav class="sidebar">
+        <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E7%AE%A1%E7%90%86%E7%AB%AF-%E9%A1%B5%E9%9D%A2-%E4%BA%91%E9%A1%B6.png"
+            alt="yunding.logo" id="yunding">
+        <button class="nav-btn" data-page="members"><img
+                src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.svg"
+                alt="membermessage" id="membermessage" onclick="choosePage()">成员信息</button>
+        <button class="nav-btn" data-page="leave"><img
+                src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E8%AF%B7%E5%81%87.svg" alt="leave
+                " id="leavebar">请假批准</button>
+        <button class="nav-btn" data-page="tasks"><img
+                src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E6%9F%A5%E7%9C%8B%E4%BB%BB%E5%8A%A1.svg"
+                alt="test" id="test">任务布置</button>
+        <button class="nav-btn" data-page="feedback"><img
+                src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%8F%8D%E9%A6%88%E6%84%8F%E8%A7%81.svg"
+                alt="feedback" id="feedback.svg">反馈意见</button>
+        <button id="logoutBtn">退出<img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E9%80%80%E5%87%BA.svg"
+                alt="signout" id="signout"></button>
+    </nav>
+
+    <div class="mainbox">
+        <!---顶栏 -->
+        <div class="topbar">
+            <!---用户名-->
+            <h1 id="userid">xxxxx</h1>
+            <!---用户头像--><img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%A4%B4%E5%83%8F.svg"
+                alt="userphoto" id="userphoto">
+
+        </div>
+        <!-- 内容区域 -->
+        <main class="content">
+            <!-- 方向选择页面 -->
+            <div id="choose" style="display: block;">
+                <button id="viewChartBtn">查看图表</button>
+                <div class="direction-container">
+                    <div class="direction-item">
+                        <h1>全栈</h1>
+                        <p>所在人数:100</p>
+                    </div>
+                    <div class="direction-item">
+                        <h1>数据科学</h1>
+                        <p>所在人数:100</p>
+                    </div>
+                    <div class="direction-item">
+                        <h1>Java</h1>
+                        <p>所在人数:100</p>
+                    </div>
+                    <div class="direction-item">
+                        <h1>CPU</h1>
+                        <p>所在人数:100</p>
+                    </div>
+                    <div class="direction-item">
+                        <h1>全媒体</h1>
+                        <p>所在人数:100</p>
+                    </div>
+                    <div class="direction-item">
+                        <p>点击添加方向</p><img src="https://zhangxiaohan.oss-cn-beijing.aliyuncs.com/undefined%E5%8A%A0%E5%8F%B7.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 图表页面 -->
+            <div class="chart-container" id="chartContainer" style="display: none;">
+                <div class="x-axis"></div>
+                <div class="y-axis">
+                    <div style="top: 0;">100</div>
+                    <div class="tick" style="top: 0;"></div>
+                    <div style="top: 20%;">80</div>
+                    <div class="tick" style="top: 20%;"></div>
+                    <div style="top: 40%;">60</div>
+                    <div class="tick" style="top: 40%;"></div>
+                    <div style="top: 60%;">40</div>
+                    <div class="tick" style="top: 60%;"></div>
+                    <div style="top: 80%;">20</div>
+                    <div class="tick" style="top: 80%;"></div>
+                    <div style="top: 100%;">0</div>
+                    <div class="tick" style="top: 100%;"></div>
+                </div>
+
+                <div class="column-group">
+                    <div class="column">
+                        <div class="bar"></div>
+                        <h3>全栈</h3>
+                    </div>
+                    <div class="column">
+                        <div class="bar"></div>
+                        <h3>数据科学</h3>
+                    </div>
+                    <div class="column">
+                        <div class="bar"></div>
+                        <h3>Java</h3>
+                    </div>
+                    <div class="column">
+                        <div class="bar"></div>
+                        <h3>CPU</h3>
+                    </div>
+                    <div class="column">
+                        <div class="bar"></div>
+                        <h3>全媒体</h3>
+                    </div>
+                </div>
+
+                <div class="horizontal-line horizontal-line-20"></div>
+                <div class="horizontal-line horizontal-line-40"></div>
+                <div class="horizontal-line horizontal-line-60"></div>
+                <div class="horizontal-line horizontal-line-80"></div>
+                <div class="horizontal-line horizontal-line-100"></div>
+            </div>
+            <!-- 成员列表页面 -->
+            <div id="members" class="page" style="display: none;">
+                <div class="search-box">
+                    <input type="text" placeholder="请输入查找学生的姓名">
+                    <button>搜索</button>
+                </div>
+
+                <div class="user-info-header">
+                    <!-- 这是表头 -->
+                    <!-- <span>头像</span>
+                        <span>姓名</span>
+                        <span>方向</span>
+                        <span>学院</span>
+                        <span>密码</span>
+                        <span>联系电话</span>
+                        <span>注册时间</span>
+                        <span>操作</span> -->
+                </div>
+
+                <div class="user-info-list">
+                    <!-- 这是内容 -->
+                    <div class="user-info-item">
+                        <!-- <span></span>
+                            <span>张三</span>
+                            <span>全媒体</span>
+                            <span>某某学院</span>
+                            <span>******</span>
+                            <span>12345678910</span>
+                            <span>2025 - 04 - 25</span>
+                            <button class="action-btn" id="changeMsg">修改</button> -->
+                    </div>
+                </div>
+
+                <button class="add-member-btn" style="display: none;">点击新增成员</button>
+
+                <!-- “表格”翻页 -->
+                <div class="pagination" style="cursor: default;">
+                    <span id="prev" onclick="prevPage()"></span>
+                    <span>|</span>
+                    <span id="next" onclick="nextPage()"></span>
+                    <!-- 不可再切换上下页时，在鼠标经过切换“按钮”处，触发提示 -->
+                    <div id="tip" class="tip" style="display: none;"></div>
+                </div>
+            </div>
+            <!-- 成员信息修改页面 -->
+            <div class="profile-container" id="profileContainer" style="display: none;">
+                <div class="profile-header"></div>
+                <form class="profile-form">
+                    <div>
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" placeholder="">
+                    </div>
+                    <div>
+                        <label for="direction">方向</label>
+                        <input type="text" id="direction" placeholder="">
+                    </div>
+                    <div>
+                        <label for="academy">学院</label>
+                        <input type="text" id="academy" placeholder="">
+                    </div>
+                    <div>
+                        <label for="password">密码</label>
+                        <input type="password" id="password" placeholder="">
+                    </div>
+                    <div>
+                        <label for="phone">联系电话</label>
+                        <input type="text" id="phone" placeholder="">
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="btn" >确定修改</button>
+                        <button type="button" class="btn" onclick="goMembers()">关闭</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="leave" class="page">
+                <div class="approval-list" id="listContainer">
+                </div>
+
+            </div>
+
+            <div id="tasks" class="page">
+                <div class="task-description">
+                    <h2>任务描述</h2>
+                    <div id="time-date-display"></div>
+                    <script>
+                        function updateTime() {
+                            const now = new Date();
+                            const year = now.getFullYear();
+                            const month = String(now.getMonth() + 1).padStart(2, '0');
+                            const day = String(now.getDate()).padStart(2, '0');
+                            const hours = String(now.getHours()).padStart(2, '0');
+                            const minutes = String(now.getMinutes()).padStart(2, '0');
+                            const timeDateString = `${year}-${month}-${day} ${hours}:${minutes}`;
+                            document.getElementById('time-date-display').textContent = timeDateString;
+                        }
+
+                        // 页面加载时更新时间
+                        updateTime();
+                        // 每分钟更新一次时间
+                        setInterval(updateTime, 60 * 1000);
+                    </script>
+                    <div id="editableDiv" contenteditable="true"></div>
+                    <script>
+                        const editableDiv = document.getElementById('editableDiv');
+                        editableDiv.addEventListener('focus', function () {
+                            if (this.textContent === '请输入任务') {
+                                this.textContent = '';
+                                this.style.color = '#000';
+                            }
+                        });
+                        editableDiv.addEventListener('blur', function () {
+                            if (this.textContent === '') {
+                                this.textContent = '请输入任务';
+                                this.style.color = '#999';
+                            }
+                        });
+                    </script>
+                    <div class="upload-area">
+                        拖入图片或文件
+                    </div>
+                    <script>
+                        // 文件上传处理
+                        const uploadArea = document.querySelector('.upload-area');
+                        const fileInput = document.createElement('input');
+                        fileInput.type = 'file';
+                        fileInput.multiple = true;
+                        fileInput.style.display = 'none';
+                        document.body.appendChild(fileInput);
+
+                        let tempFiles = []; // 暂存文件
+
+                        // 拖放事件
+                        ['dragover', 'dragleave', 'drop'].forEach(eventName => {
+                            uploadArea.addEventListener(eventName, (e) => {
+                                e.preventDefault();
+                                if (eventName === 'dragover') {
+                                    uploadArea.style.backgroundColor = '#f0f0f0';
+                                } else if (eventName === 'dragleave') {
+                                    uploadArea.style.backgroundColor = '';
+                                } else if (eventName === 'drop') {
+                                    uploadArea.style.backgroundColor = '';
+                                    tempFiles = Array.from(e.dataTransfer.files);
+                                    updateFileDisplay();
+                                }
+                            });
+                        });
+
+                        // 点击上传区域触发文件选择
+                        uploadArea.addEventListener('click', () => fileInput.click());
+
+                        // 文件选择变化
+                        fileInput.addEventListener('change', (e) => {
+                            tempFiles = Array.from(e.target.files);
+                            updateFileDisplay();
+                        });
+
+                        function updateFileDisplay() {
+                            uploadArea.textContent = tempFiles.length
+                                ? `已选择文件：${tempFiles.map(f => f.name).join(', ')}`
+                                : '拖入图片或文件';
+                        }
+                    </script>
+                    <button class="publish-btn">发布</button>
+                    <script>
+                        // 发布按钮点击事件
+                        document.querySelector('.publish-btn').addEventListener('click', () => {
+                            const time = updateTime();
+                            const task = document.getElementById('editableDiv').textContent.trim() || '无任务内容';
+                            const files = tempFiles;
+
+                            // 创建FormData对象
+                            const formData = new FormData();
+                            formData.append('time', time);
+                            formData.append('task', task);
+                            files.forEach(file => formData.append('files', file));
+
+                            // 发送请求（需替换接口地址）
+                            const publishBtn = document.querySelector('.publish-btn');
+                            publishBtn.disabled = true;
+                            publishBtn.textContent = '发布中...';
+
+                            fetch("http://test-cn.your-api-server.com/manage/task?class &task", {
+                                method: 'POST',
+                                body: formData
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    publishBtn.disabled = false;
+                                    publishBtn.textContent = '发布';
+                                    if (data.success) {
+                                        alert('发布成功');
+                                        // 清空表单
+                                        document.getElementById('editableDiv').textContent = '请输入任务';
+                                        tempFiles = [];
+                                        uploadArea.textContent = '拖入图片或文件';
+                                    } else {
+                                        alert('发布失败：' + data.message);
+                                    }
+                                })
+                                .catch(error => {
+                                    publishBtn.disabled = false;
+                                    publishBtn.textContent = '发布';
+                                    alert('网络错误，请检查连接');
+                                    console.error('请求错误:', error);
+                                });
+                        });
+
+                    </script>
+                </div>
+            </div>
+
+            <div id="feedback" class="page">
+                <div class="opinion-container" id="opinionList">
+
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- 提前使用外联JS -->
+    <script src="script.js"></script>
+    <script>
+
+        // 页面切换功能
+        const buttons = document.querySelectorAll('.nav-btn');
+        const pages = document.querySelectorAll('.page');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetPage = button.dataset.page;
+                removeDisplay();
+
+                // 切换按钮激活状态
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // 切换页面显示
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === targetPage) {
+                        page.classList.add('active');
+                        if(targetPage === "members"){
+                            removeDisplay();
+                            choose.style.display = "block"
+                        }
+                    }
+                });
+            });
+        });
+
+        // 退出功能
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            if (confirm('确定要退出系统吗？')) {
+                // 这里可以添加实际退出逻辑
+                window.location.href = '../03-管理端-登录/管理端.-登录.html'; // 跳转到登录页
+            }
+        });
+
+        // 默认显示第一个页面
+        document.querySelector('.nav-btn').click();
+        choose.style.display = "block";
+
+    </script>
+</body>
+
+
+</html>

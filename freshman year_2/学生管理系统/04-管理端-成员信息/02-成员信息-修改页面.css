@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+.mainbox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.logo {
+    text-align: center;
+    padding: 10px;
+}
+
+.sidebar {
+    width: 260px;
+    position: relative;
+    /* 为退出按钮定位准备 */
+    min-height: calc(100vh - 60px);
+    position: relative;
+    background-color: #b4e1fe;
+    padding: 10px 2px;
+    border-right: 1px solid #858585;
+}
+#yunding {
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+.nav-btn {
+    font-size: larger;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    ;
+    padding: 15px 20px 15px 40px;
+    margin-bottom: 13px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(83, 83, 83, 0.5);
+    background-color: #dcf2ff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+#logoutBtn {
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 10px;
+    right: 0;
+    font-size: medium;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+
+#signout {
+    width: 30px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background-color: #8cd1fb;
+}
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    background-color: #b4e1fe;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.topbar img {
+    margin: 10px 50px 10px 30px;
+    width: 60px;
+}
+.content {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #8cd1fb, white);
+}
+ .profile-container {
+     background-color: #a3daff;
+     border: none;
+     box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+     border-radius: 10px;
+     padding-top: 100px;
+     padding-left: 300px;
+     padding-right: 300px;
+ }
+
+ .profile-header {
+     width: 80px;
+     height: 80px;
+     background-color: white;
+     border-radius: 50%;
+     margin: 0 auto 20px;
+ }
+
+ .profile-form {
+     display: flex;
+     flex-direction: column;
+ }
+
+ .profile-form div {
+     display: flex;
+     align-items: center;
+     margin-bottom: 15px;
+     white-space: nowrap;
+ }
+
+ .profile-form label {
+     font-weight: bold;
+     font-size: 16px;
+     margin-right: 10px;
+     width: 80px;
+ }
+.profile-form input {
+     flex: 1;
+     padding: 8px;
+     border: 1px solid #ccc;
+     border-radius: 7px;
+     width: auto;
+ }
+
+.btn-container {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+ }
+
+.btn {
+     padding: 8px 20px;
+     border: none;
+     border-radius: 7px;
+     cursor: pointer;
+     background-color: white;
+     color: black;
+     font-weight: bolder;
+     margin-right: 10px;
+ }
+
+ .btn:last-child {
+     margin-left: 110px;
+ }

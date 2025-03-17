@@ -1,0 +1,63 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (min-width:1200px) {
+    .main-content {
+        width: 100px;
+        margin: 0 auto;
+    }
+}
+
+.taili {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.resetPassword {
+    position: absolute;
+    top: 3%;
+    left: 54%;
+    width: 746px;
+    height: 683px;
+}
+.resetPassword .newPassword {
+    position: absolute;
+    top: 47%;
+    right: 129px;
+    width: 321px;
+    height: 47px;
+    border: 2px solid#f1f6fa;
+    border-radius: 16px;
+    background-color: #ffffff;
+    font-size: 20px;
+    padding-left: 15px;
+}
+.resetPassword .confirmPassword {
+    position: absolute;
+    top: 61%;
+    right: 129px;
+    width: 319px;
+    height: 48px;
+    border: 2px solid#f1f6fa;
+    border-radius: 16px;
+    background-color: #ffffff;
+    font-size: 20px;
+    padding-left: 15px;
+}
+.resetPassword .submit {
+    position: absolute;
+    top: 81%;
+    left: 279px;
+    width: 180px;
+    height: 46px;
+    line-height: 46px;
+    border: none;
+    border-radius: 16px;
+    background-color: #7ce2f8;
+    color: #000000;
+    font-size: 25px;
+    font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+    font-weight: 1200;
+}

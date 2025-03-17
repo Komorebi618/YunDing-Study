@@ -1,0 +1,459 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+    flex-direction: column;
+    box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
+  }
+    .mainbox{
+        display: flex;
+        flex-direction:column;
+        flex: 1;
+
+    }
+
+  /* 侧边栏样式 */
+  .sidebar {width: 260px;
+    position: relative;
+    /* 为退出按钮定位准备 */
+    min-height: calc(100vh - 60px);
+    position: relative;
+      background-color:#b4e1fe;
+      padding:10px  2px;
+    border-right: 1px solid #858585;
+  }
+  #yunding{
+    padding-left: 50px;
+    padding-bottom: 10px;
+  }
+
+  .nav-btn {
+    font-size: larger;
+    display: flex;
+    align-items: center;
+      width: 100%;;
+      padding: 15px 20px 15px 40px;
+      margin-bottom: 13px;
+      border: none;
+      border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(83, 83, 83, 0.5);
+      background-color: #dcf2ff;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      transition: all 0.3s;
+
+  }
+  #logoutBtn{
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 10px;
+    right: 0;
+    font-size: medium;
+        appearance: none;
+        border: none;
+        background-color: transparent;
+  }
+#signout{
+    width: 30px;
+}
+  .nav-btn:hover,
+  .nav-btn.active {
+      background-color:#8cd1fb;
+  }
+ .topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    background-color:#b4e1fe;
+    font-size: 20px;
+        letter-spacing: 2px;
+ }
+ .topbar img{
+    margin: 10px 50px 10px 30px;
+    width: 60px;
+ }
+  /* 内容区域样式 */
+  .content {
+    position: relative;
+    display: flex;
+      flex: 1;
+      padding: 20px;
+      background-image:linear-gradient(to right, #8cd1fb,white);
+  }
+    .page {
+      display: none;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  .page.active {
+      display: block;
+  }
+
+/* 成员信息 */
+#members {
+  margin-left: 50px;
+}
+  /* 搜索框 */
+.search-box {
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
+}
+.search-box::before {
+  content: url('https://zhangxiaohan.oss-cn-beijing.aliyuncs.com/undefined%E6%90%9C%E7%B4%A2.png');
+  position: absolute;
+  margin-left: 920px;
+  top: 50%;
+  transform: translateY(-50%) scale(0.1);
+  z-index: 1;
+}
+.search-box input {
+  flex: 1;
+  padding: 8px 8px 8px 30px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin-left: 1000px;
+}
+.search-box button {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  font-weight: bolder;
+}
+
+  /* “表格”头栏*/
+.user-info-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 2fr 2fr 2fr 1fr;
+  gap: 15px;
+  padding: 0px 10px;
+  text-align: center;
+  /* justify-content: space-between; */
+  /* padding: 10px; */
+  margin-bottom: 10px;
+}
+.user-info-header span {
+  background-color: #fff;
+  border-radius: 70px;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+  /* 成员信息列表内容 */
+.user-info-list {
+  display: grid;
+  grid-template-rows: 1fr;
+  /* flex-direction: column; */
+}
+.user-info-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 2fr 2fr 2fr 1fr;
+  gap: 10px;
+  /* justify-content: space-between; */
+  padding: 10px;
+
+}
+.user-info-item span {
+  height: 60px;
+  border-radius: 30px;
+  background-color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+.action-btn {
+  background-color: rgb(125, 183, 250);
+  border-radius: 70px;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+  /* 新增成员按钮 */
+.add-member-btn {
+  background-color: rgb(125, 183, 250);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+  /* “表格翻页” */
+.pagination {
+  text-align: center;
+  margin-top: 10px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 10px;
+  user-select: none;
+}
+.pagination span {
+  margin: 0 5px;
+  font-size: large;
+}
+.pagination #prev:hover,
+.pagination #next:hover {
+  cursor: pointer;
+}
+.pagination #prev::before {
+  content: "<";
+}
+.pagination #next::before {
+  content: ">";
+}
+
+  /* 首页末页提示框 */
+.tip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: none;
+  z-index: 1000;
+}
+
+
+
+
+/*任务布置*/
+
+#tasks{
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 15%;
+    height: 70%;
+    /*margin: 100px 200px 100px 200px;*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(to right, #e6f9fd, white);
+}
+.task-description {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    height: 95%;
+}
+
+.task-description h2 {
+    position: absolute;
+    top: -2%;left: 35%;
+
+    font-size: 3vw;
+    font-weight: 500;
+    display: flex;
+
+    margin-bottom: 10px;
+}
+
+#time-date-display {
+    position: absolute;
+    gap: 12%;
+    width: 50%;
+    top: 8%;
+    display: flex;
+    font-size: 0.8vw;
+    color: #666;
+    margin-bottom: 13px;
+    margin: 10px;
+}
+ #editableDiv {
+  width: 80%;
+   font-size: 0.9vw;
+   cursor: text;
+  position: absolute;
+    left: 0px;
+    top: 9%;
+    bottom: 12%;
+    display: flex;
+    justify-content: center;
+    height: 40%;
+    overflow-y: auto;
+    margin: 10%;
+    border-top: 2px solid rgb(124, 226, 248);
+    border-bottom: 2px solid rgb(124, 226, 248);
+    justify-content: flex-start;
+ }
+
+ #editableDiv:empty::before {
+   content: "请输入任务";
+ }
+.upload-area {
+    position: absolute;
+    bottom: 10vh;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    left: 10%;
+    width: 80%;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+
+.publish-btn {
+    position: absolute;
+    right: 7vw;
+    bottom: 5vh;
+    float: right;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7ce2f8;
+    color: #000000;
+    cursor: pointer;
+}
+ .publish-btn:hover {
+   background-color: #0084ff;
+ }
+/*反馈意见*/
+ .opinion-container {
+  position: absolute;
+  top: 10%;
+  left: 70px;
+   padding: 20px;
+   height: 95%;
+   max-height: 700px;
+   width: 90%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin-left: 0;
+   overflow-y: auto;
+ }
+
+ .opinion-card {
+   position: relative;
+   display: flex;
+   flex-shrink: 0;
+   height: 150px;
+   background: white;
+   margin-bottom: 20px;
+   padding: 20px;
+   border-radius: 4px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   /* 确保子元素宽度合适 */
+   width: 100%;
+ }
+
+ .card-header {
+  top: 1.5px;
+  position: absolute;
+   font-size: 13px;
+   color: #999;
+  
+ }
+
+ .card-content {
+  padding-top: 5px;
+   font-size: 1vw;
+   color: #333;
+    border-top: 2px solid #7ce2f8;
+ }
+
+ .reply-btn {
+  position: absolute;
+  bottom: 4px;
+  right: 7px;
+   float: right;
+   background: #7ce2f8;
+   color: rgb(0, 0, 0);
+   border: none;
+   padding: 5px 12px;
+   border-radius: 20px;
+   cursor: pointer;
+   transition:  0.3s;
+ }
+
+ .reply-btn:hover {
+   background: #81d4fa;
+ }
+
+/*请假*/
+#leave{
+  position: relative;
+  margin: 0 auto;
+}
+.approval-list {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 700px;
+  padding: 20px;
+  display: flex;
+  flex-direction:column;
+  overflow-y: auto;
+    /* 垂直方向自动滚动条 */
+}
+
+.list-item {
+  display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 10px;
+    flex-shrink: 0;
+      /* 让每个元素在主轴方向上按比例分配空间，可根据需求调整 */
+      background-repeat: no - repeat;
+      border-radius: 15px;
+}
+
+.radio-box {
+  width: 30px;
+  height: 30px;
+}
+
+.item-text {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.approve-btn,
+.reject-btn {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.approve-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.reject-btn {
+  background: #ff9800;
+  color: white;
+}
+
+/* 禁用状态样式 */
+.approve-btn[disabled] {
+  background: #cccccc;
+}
+
+.reject-btn[disabled] {
+  background: #cccccc;
+}

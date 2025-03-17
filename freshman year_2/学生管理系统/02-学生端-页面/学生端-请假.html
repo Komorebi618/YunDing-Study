@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生端-请假</title>
+    <link rel="stylesheet" href="学生端-请假.css">
+</head>
+<body>
+    <script src="学生端-请假.js"></script>
+    <div class="container">
+        <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/077B7F0FAA043188656434C56D30FD19.jpg"alt="" class="main"> 
+            <div class="left">
+                <ul class="sidebar-menu">
+                    <li class="one"><a href="01学生端-个人信息.html"><img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.svg"
+                        alt="membermessage" id="membermessage">个人信息</a></li>
+
+                    <li class="two" style="background-color: #8cd1fb;"><img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E8%AF%B7%E5%81%87.svg" alt="leave
+                                    " id="leavebar">请假&emsp;&emsp;</li>
+
+                    <li><a href="学生端-查看任务.html"><img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E6%9F%A5%E7%9C%8B%E4%BB%BB%E5%8A%A1.svg" alt="test"
+                        id="test">查看任务</a></li>
+
+                    <li><a href="学生端-反馈意见.html"><img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E9%80%80%E5%87%BA.svg" alt="signout" id="signout">反馈意见</a></li>
+                </ul>
+            <button id="logoutBtn">退出<img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E9%80%80%E5%87%BA.svg"
+                    alt="signout" id="signout"></button>
+            </div>
+            <div class="right">
+                <div id="username" name="username" class="username">xxxxx</div>
+                 <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%A4%B4%E5%83%8F_03.jpg" id="usernameAvatar" name="usernameAvatar" class="usernameAvatar" alt=""> 
+                <div class="note">
+                    <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E7%94%9F%E7%AB%AF-%E9%A1%B5%E9%9D%A2-%E8%AF%B7%E5%81%87%E5%8F%B3_03.jpg" alt="" >
+                        <input type="text" id="time" name="time" class="time"  required>
+                        <input type="text" id="reason" name="reason" class="reason"  required>
+                        <input type="text" id="name" name="name" class="name"  required>
+                        <button type="submit" class="submit">提交</button>
+                </div>
+                <!-- <input type="text" id="times" name="times" class="times" required>
+                <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E6%9F%A5%E7%9C%8B%E8%AF%B7%E5%81%87_03.jpg" alt="" class="view"> -->
+            </div>
+    </div>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            if (confirm('确定要退出系统吗？')) {
+                window.location.href = "../01-学生端-登录/学生端-登录.html"; 
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const leaveRequestForm = document.getElementById('leaveRequestForm');
+
+            leaveRequestForm.addEventListener('submit', function (event) {
+                event.preventDefault(); 
+
+                const time = document.getElementById('time').value;
+                const reason = document.getElementById('reason').value;
+                const name = document.getElementById('name').value;
+
+                if (!time || !reason) {
+                    alert('请假时间和请假原因为必填项。');
+                    return;
+                }
+
+                // 构建请求体
+                const requestBody = {
+                    time: time,
+                    reason: reason,
+                    name: name
+                };
+
+                // 发送请假请求
+                fetch(' https://ffb8-2409-8a0c-264-6720-793a-41b9-e6bb-90a0.ngrok-free.app/stu/leave', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody) // 将请求体转换为JSON字符串
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('网络响应错误');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('请假申请成功:', data);
+                        alert('请假申请成功！');
+                    })
+                    .catch(error => {
+                        console.error('请假申请失败:', error);
+                        alert('请假申请失败，请重试。');
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
