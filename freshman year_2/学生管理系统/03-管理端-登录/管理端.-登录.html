@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理系统-管理端</title>
+    <link rel="stylesheet" href="管理端-登录.css">
+</head>
+
+<body>
+
+    <img src="https://star-tomato.oss-cn-beijing.aliyuncs.com/YunDing_Academy/Freshman_year_2/student-management-system/%E8%83%8C%E6%99%AF.png" alt="" class="taili">
+
+    <div class="denglu">
+        <img src="https://star-tomato.oss-cn-beijing.aliyuncs.com/YunDing_Academy/Freshman_year_2/student-management-system/%E7%AE%A1%E7%90%86%E7%AB%AF-%E7%99%BB%E9%99%86.png" alt="">
+        <form id="login-form">
+        <input type="text" id="username" name="username" class="username" placeholder="用户名" required>
+        <input type="password" id="password" name="password" class="password" placeholder="密码" required>
+    <div class="captcha">
+        <span class="captcha-code" id="captcha-code"></span>
+        <span class="captcha-refresh" id="captcha-refresh" onclick="refreshCaptcha()">&#x21bb;</span>
+    </div>
+    <input type="text" id="captchaInput" placeholder="输入验证码" class="captchaInput" required>
+    <button type="submit" class="submit">登录</button>
+    </form>
+        <!-- 页面转换，点击切换到学生端 -->
+        <a href="../01-学生端-登录/学生端-登录.html" class="xuesheng" style="width: 222px; height: 74px;"> </a>
+        <!-- 页面转换，点击切换到管理端-忘记密码 -->
+        <a href="./管理端-忘记密码.html" class="seekpassword" style="width: 80px; height: 31px;"></a>
+    </div>
+    <script>
+        // 生成验证码函数
+        function generateCaptcha() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 4; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return captcha;
+        }
+
+        // 页面加载时生成验证码
+        const captchaCodeElement = document.getElementById('captcha-code');
+        let currentCaptcha = generateCaptcha();
+        captchaCodeElement.textContent = currentCaptcha;
+
+        // 刷新验证码函数
+        function refreshCaptcha() {
+            currentCaptcha = generateCaptcha();
+            const captchaCodeElement = document.getElementById('captcha-code');
+            captchaCodeElement.textContent = currentCaptcha;
+        }
+
+        // 表单提交事件处理
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const userCaptcha = document.getElementById('captchaInput').value;
+            if (userCaptcha === currentCaptcha) {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                // 模拟发送请求到服务器
+                fetch('  https://ffb8-2409-8a0c-264-6720-793a-41b9-e6bb-90a0.ngrok-free.app/manage/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('网络响应不正常');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        //data.success
+                        if (data.code == 1) {
+                            console.log('登录成功:', data);
+                            alert('登录成功');
+
+                            window.location.href = "../04-管理端-成员信息/管理端总页面.html";
+                        } else {
+                            alert('用户名或密码错误，请重新输入');
+                        }
+                        //  })
+                    })
+                    .catch(error => {
+                        console.error('请求出错:', error);
+                        alert('登录时发生错误，请稍后再试');
+                    });
+            } else {
+                alert('验证码输入错误，请重新输入');
+                refreshCaptcha();
+                document.getElementById('captchaInput').value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>

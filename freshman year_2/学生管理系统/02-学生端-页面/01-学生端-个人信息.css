@@ -1,0 +1,235 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+} 
+.left {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* background-color: #b4e1fe;  */
+    width: 19%;
+        height: 169%;
+}
+/* .left .box1{
+    position: absolute;
+    background-color: #b4e1fe;
+    top: 100%;
+        left: 0%;
+        width: 101%;
+        height: 13%;
+
+}  */
+.sidebar-menu {
+    list-style-type: none;
+}
+.left .sidebar-menu .one{
+    margin-top: 32%;
+    text-decoration: none;
+        text-align: center;
+        color: #000000;
+        width: 95%;
+        height: 53px;
+        line-height: 53px;
+        display: block;
+        border-radius: 16px;
+        padding: 10px;
+        font-size: 25px;
+        font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+        font-weight: 1200;
+        transition: background-color 0.3s ease;
+    
+}
+.sidebar-menu li {
+    top:10px;
+    left:20px;
+    margin-top: 14px;
+}
+.sidebar-menu a {
+    text-decoration: none;
+    text-align: center;
+    color: #000000;
+    width: 95%;
+    height: 57px;
+    line-height: 57px;
+    display: block;
+    border-radius: 16px;
+    padding: 10px;
+    background-color: #e6f9fd;
+    font-size: 25px;
+    font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+    font-weight: 1200;
+    transition: background-color 0.3s ease;
+}
+/* 左栏小图标 */
+.sidebar-menu li img,
+.sidebar-menu a img {
+    vertical-align: middle;
+}
+.sidebar-menu a:hover {
+    background-color: #8cd1fb;
+} 
+.logout {
+    position: absolute;
+    width: 35%;
+        height: 4%;
+        top: 45%;
+        /* background-color: skyblue; */
+        left: 62%;
+    text-align: center;
+}
+#logoutBtn {
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 40%;
+    right: 0;
+    font-size: 20px;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+
+#signout {
+    width: 50px;
+}
+/* .logout a {
+    position: absolute;
+    text-decoration: none;
+    top: 32%;
+        right: 57%;
+    font-size: 20px;
+    font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+    color: #000000;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+} */
+
+.logout a:hover {
+    background-color: none;
+}
+.logout .quit{
+    position: absolute;
+    top: 13%;
+        right: 10%;
+}
+.right{
+    position: absolute;
+        top: 0%;
+        right: 0%;
+        width: 1367px;
+        height: 951px;
+        /* background-color: skyblue; */
+}
+.right .box{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:11%;
+    left:0%;
+}
+.right .username{
+    position: absolute;
+    color: #000000;
+    background-color: #b4e1fe;
+    text-align: center;
+        line-height: 63px;
+        font-size: 25px;
+        border: none;
+        top: 2%;
+        right: 12%;
+        width: 152px;
+        height: 63px;
+}
+.right .avatar{
+    position: absolute;
+    /* background-color: skyblue; */
+top: 8%;
+    right: 7%;
+    width: 203px;
+    height: 86px;
+    height: 86px;
+}
+.right .avatar .touxiang{
+    text-align: center;
+}
+.right .name {
+    position: absolute;
+    background-color: #ffffff;
+    color: #b6b1b1;
+    text-align: center;
+    line-height: 98px;
+    font-size: 25px;
+    border: none;
+    top: 194px;
+        right: 14%;
+    width: 144px;
+    height: 98px;
+}
+.right .gender {
+    position: absolute;
+    background-color: #ffffff;
+    color: #b6b1b1;
+    text-align: center;
+    line-height: 98px;
+    font-size: 25px;
+    border: none;
+    top: 321px;
+        right: 14%;
+    width: 144px;
+    height: 98px;
+}
+.right .college {
+    position: absolute;
+    background-color: #ffffff;
+    color: #b6b1b1;
+    text-align: center;
+    line-height: 98px;
+    font-size: 25px;
+    border: none;
+    top: 448px;
+    right: 14%;
+    width: 144px;
+    height: 98px;
+}
+.right .direction {
+    position: absolute;
+    background-color: #ffffff;
+    color: #b6b1b1;
+    text-align: center;
+    line-height: 98px;
+    font-size: 25px;
+    border: none;
+    top: 575px;
+    right: 14%;
+    width: 144px;
+    height: 98px;
+}
+.right .phone {
+    position: absolute;
+    background-color: #ffffff;
+    color: #b6b1b1;
+    text-align: center;
+    line-height: 98px;
+    font-size: 25px;
+    border: none;
+    top: 702px;
+        right: 14%;
+        width: 235px;
+    height: 98px;
+}
+.right .usernameAvatar{
+    position: absolute;
+    top: 18px;
+    right: 72px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url("https: //zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%A4%B4%E5%83%8F_03.jpg");
+}

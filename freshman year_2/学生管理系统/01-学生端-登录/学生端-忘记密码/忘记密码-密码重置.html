@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忘记密码-密码重置</title>
+    <link rel="stylesheet" href="忘记密码-密码重置.css">
+</head>
+<body>
+    <form id="resetPasswordForm">
+    <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/55ED5E82CFFD1324F64E6818A991631A.png" alt="" class="taili">
+    <div class="resetPassword">
+        <img src="https://zhangjiaxuan666.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E7%94%9F%E7%AB%AF-%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81-%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%EF%BC%881%EF%BC%89_03.jpg" alt="">
+        <input type="password" id="newPassword" name="newPassword" class="newPassword" placeholder="新密码" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="confirmPassword" placeholder="确认密码" required>
+        <button type="submit" class="submit">完成</button>
+    </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                const resetPasswordForm = document.getElementById('resetPasswordForm');
+
+                resetPasswordForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); 
+                    
+                    const newPassword = document.getElementById('newPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+
+                    if (newPassword !== confirmPassword) {
+                        alert('两次输入的密码不一致，请重新输入。');
+                        return;
+                    }
+                    //创建 URLSearchParams 对象
+                    const params = new URLSearchParams();
+                    //使用append方法添加键值对
+                    params.append('newPassword', newPassword);
+                    params.append('confirmPassword', confirmPassword);
+                    fetch('https://3cc5-2409-8a0c-264-6720-5149-9ef4-d932-4f5b.ngrok-free.app/stu/password/reset', { 
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: params
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('网络响应错误');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('密码重置成功:', data);
+                            alert('密码重置成功，请使用新密码登录。');
+                            window.location.href = "../学生端-登录.html";
+                        })
+                        .catch(error => {
+                            console.error('密码重置失败:', error);
+                            alert('密码重置失败，请重试。');
+                        });
+                });
+        });
+    </script>
+</body>
+</html>
