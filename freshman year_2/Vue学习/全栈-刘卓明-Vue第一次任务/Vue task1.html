@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Task1</title>
+    <style>
+        .main {
+            margin: 100px auto;
+            width: 700px;
+        }
+        .warningText {
+            color: red;
+        }
+        [v-cloak] {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="app" class="main" v-cloak>
+        <input type="text" v-model="word" placeholder="在这里输入你要添加的词汇" @keyup.enter="add">
+        <h2 >你要添加的词汇是：{{ word }}</h2>
+        <h3 v-if="warning" class="warningText">词汇太多辣！！！！！</h3>
+        <button @click="add">添加</button>
+        <button @click="del">删除</button>
+        <ul>
+            <li v-for="item in wordList" :class="{warningText: warning}">{{ item }}</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    word: "",
+                    wordList: [],
+                }
+            },
+            computed: {
+                warning(){
+                    return this.wordList.length > 5
+                }
+            },
+            methods: {
+                add(){
+                    if(this.wordList.length <= 5 && this.word.trim()){
+                        this.wordList.push(this.word)
+                        this.word = ''
+                    }
+                },
+                del(){
+                    if (this.wordList.length > 0){
+                        this.wordList.pop()
+                    }
+                }
+            }
+        })
+        app.mount("#app")
+    </script>
+</body>
+</html>
